@@ -1,0 +1,11 @@
+#!/bin/bash
+
+icon="💾"
+
+devMain=$(mount | grep ' / ' | awk '{print $1}')
+devSec=$(mount | grep "/mnt/data" | awk '{print $1}')
+
+usedMain=$(df --output=pcent "$devMain" | awk 'FNR == 2 {print $1}')
+usedSec=$(df --output=pcent "$devSec" | awk 'FNR == 2 {print $1}')
+
+echo -n "$icon /: $usedMain  $icon /mnt/data: $usedSec"

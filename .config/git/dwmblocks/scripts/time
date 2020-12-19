@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo -n "🕑 $(date '+%a, %I:%M:%S %P %Z')"

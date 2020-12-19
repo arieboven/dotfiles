@@ -1,0 +1,16 @@
+#!/bin/bash
+
+icon=""
+
+iface_type=$(nmcli dev | grep connected | tr -s ' ' | cut -d' ' -f2)
+iface_name=$(nmcli dev | grep connected | awk '{print $1}' | head -1)
+
+if [ -z "$iface_name" ]; then
+    echo -ne "Down"
+else
+    icon="$(echo ${iface_type^} | head -c 1): "
+
+    ipaddr="$(ip addr show "$iface_name" | grep -oP '(?<=inet )[^ ]*' | cut -f1 -d'/' | head -1)"
+
+    echo -n "$icon$ipaddr"
+fi

@@ -58,7 +58,7 @@ alias grep='grep --color=auto'
 alias ip='ip --color=auto'
 
 # Alias for home server
-alias ssh -p 2048 account@192.168.178.20
+alias server='ssh -p 2048 account@192.168.178.20'
 
 # Alias for git repo of dotfiles 
 function config(){

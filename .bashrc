@@ -39,7 +39,7 @@ fi
 # My custom aliases
 alias c='clear'
 alias p='sudo pacman'
-alias vim='nvim'
+[ -f /usr/bin/nvim ] && alias vim='nvim'
 alias video="youtube-dl -i --merge-output-format mp4 -o '~/Videos/YoutubeVideos/%(title)s.%(ext)s'"
 alias music="youtube-dl --add-metadata --extract-audio --audio-format mp3 -o '~/Music/%(title)s.%(ext)s'"
 alias cp='cp -i'

@@ -13,7 +13,8 @@ Config files of:
 ## Installations
 ---
 **WARNING:** This will delete all corresponding old configuration files.\
-I want to discourage to use this, use this *only* if you want all files and do not want to keep anything from your old corresponding files.
+I want to discourage to use this, use this *only* if you want all files and do not want to keep anything from your old corresponding files.\
+Also I would recommend to take a look at `.bashrc`, `.xinitrc`, and `.bash_profile` before rebooting, to prevent errors.
 
     cd $HOME
 

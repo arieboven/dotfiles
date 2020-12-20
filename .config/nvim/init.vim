@@ -28,6 +28,7 @@ map <F8> :setlocal spell! spelllang=en_us<CR>
 
 filetype plugin indent on
 set title
+set titleold=St
 set laststatus=2
 set number relativenumber   " Set line number
 syntax enable               " Enable syntax

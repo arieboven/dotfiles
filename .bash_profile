@@ -24,7 +24,6 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export XDG_DWMBLOCKS="$HOME/.config/git/dwmblocks/scripts"
 
-
 if [[ "$(tty)" = "/dev/tty1" ]]; then
 	pgrep dwm || startx
 fi

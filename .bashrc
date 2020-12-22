@@ -67,6 +67,7 @@ function config(){
         # The config files of the suckless build are hard linked to the git repos of the build
         # If git restores files the link is removed. This funcition checks if there is a restore
         # if so, create new links to config files
+        ln -f $HOME/.config/git/dmenu/config.h $HOME/git/dmenu/config.h
         ln -f $HOME/.config/git/dwm/config.h $HOME/git/dwm/config.h
         ln -f $HOME/.config/git/st/config.h $HOME/git/st/config.h
         ln -f $HOME/.config/git/dwmblocks/blocks.h $HOME/git/dwmblocks/blocks.h

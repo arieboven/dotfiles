@@ -30,8 +30,10 @@ if [ $? -ne 0 ]; then
     exit 0
 fi
 
-KEY="[API Key]"
-CITY="[CITY Code]"  # Code can be found in the url in the searched city of openweathermap.org
+# Save API key and city code in openweatherdata.txt each on separated line
+# City code can be found in the url of the searched city on openweatermap.org
+KEY="$(awk 'NR==1' openweatherdata.txt)"
+CITY="$(awk 'NR==2' openweatherdata.txt)"
 UNITS="metric"
 SYMBOL="°"
 

@@ -22,6 +22,8 @@ export XDG_VIDEOS_DIR="$HOME/Videos"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 
+export QT_QPA_PLATFORMTHEME="qt5ct"
+
 export XDG_DWMBLOCKS="$HOME/.config/git/dwmblocks/scripts"
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then

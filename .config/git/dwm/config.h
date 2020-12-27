@@ -68,6 +68,10 @@ static const Rule rules[] = {
      *  - 3 as 1, but closing that window reverts the view back to what it was previously (*)
      *  - 4 as 2, but closing that window reverts the view back to what it was previously (*)
 	 */
+    /*
+     * In the function swallow(Client *p, Client *c) in dwm.c
+     * can certain windows be blocked for swallowing if there are loading windows
+    */
 	/* class                 instance  title           tags mask  switchtag  iscentered isfloating  isterminal   noswallow  monitor */
 	{ "Gimp",                NULL,     NULL,           1 << 1,    1,         1,         1,          0,           0,        -1 },
 	{ NULL,                  NULL,     "accessgranted", 0,        0,         1,         1,          0,           0,         0 },
@@ -77,7 +81,7 @@ static const Rule rules[] = {
 	{ "conky",               NULL,     NULL,           1 << 0,    0,         0,         0,          0,           0,         1 },
 	{ NULL,                  NULL,     "tty-clock",    1 << 0,    0,         0,         0,          0,           0,         1 },
 	{ NULL,                  NULL,     "vis",          1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ "VirtualBox Manager",  NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         1 },
+	{ NULL,  "Oracle VM VirtualBox Manager", NULL,     1 << 1,    1,         0,         0,          0,           0,         1 },
     { "minecraft-launcher",  NULL,     NULL,           1 << 4,    1,         1,         0,          0,           0,         0 },
     { "libreoffice-startcenter", NULL, NULL,           1 << 3,    1,         0,         0,          0,           0,         0 },
     { "vlc",                 NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
@@ -87,7 +91,7 @@ static const Rule rules[] = {
     { "Blender",             NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
     { "Inkscape",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
     { "Tor Browser",         NULL,     NULL,           0,         0,         1,         1,          0,           0,         0 },
-	{ "discord",             NULL,     NULL,           1 << 2,    0,         1,         1,          0,           0,         1 },
+	{ NULL,                  "Discord", NULL,          1 << 2,    0,         1,         1,          0,           0,         1 },
 	{ NULL,                  NULL,     "Event Tester", 0,         0,         0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,                  "spterm", NULL,           SPTAG(0),  0,         1,         1,          1,           1,        -1 },
 	{ NULL,                  "spfm",   NULL,           SPTAG(1),  0,         1,         1,          1,           1,        -1 },

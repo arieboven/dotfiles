@@ -32,8 +32,8 @@ fi
 
 # Save API key and city code in openweatherdata.txt each on separated line
 # City code can be found in the url of the searched city on openweatermap.org
-KEY="$(awk 'NR==1' openweatherdata.txt)"
-CITY="$(awk 'NR==2' openweatherdata.txt)"
+KEY="$(awk 'NR==1' ${XDG_DWMBLOCKS}/openweatherdata.txt)"
+CITY="$(awk 'NR==2' ${XDG_DWMBLOCKS}/openweatherdata.txt)"
 UNITS="metric"
 SYMBOL="°"
 

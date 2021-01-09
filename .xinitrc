@@ -30,7 +30,7 @@ sudo $HOME/bin/mountNAS
 [[ -f ~/.Xresources ]] && xrdb -merge ~/.Xresources
 
 # Set background
-feh --bg-fill $HOME/background1.jpg $HOME/background2.jpg
+feh --bg-fill $XDG_LOCAL_HOME/share/backgrounds/background1.jpg $XDG_LOCAL_HOME/share/backgrounds/background2.jpg
 
 picom -b
 

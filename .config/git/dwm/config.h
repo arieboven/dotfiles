@@ -81,7 +81,7 @@ static const Rule rules[] = {
 	{ "conky",               NULL,     NULL,           1 << 0,    0,         0,         0,          0,           0,         1 },
 	{ NULL,                  NULL,     "tty-clock",    1 << 0,    0,         0,         0,          0,           0,         1 },
 	{ NULL,                  NULL,     "vis",          1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ NULL,  "Oracle VM VirtualBox Manager", NULL,     1 << 1,    1,         0,         0,          0,           0,         1 },
+	{ "VirtualBox Manager",  NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         1 },
     { "minecraft-launcher",  NULL,     NULL,           1 << 4,    1,         1,         0,          0,           0,         0 },
     { "libreoffice-startcenter", NULL, NULL,           1 << 3,    1,         0,         0,          0,           0,         0 },
     { "vlc",                 NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
@@ -91,11 +91,15 @@ static const Rule rules[] = {
     { "Blender",             NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
     { "Inkscape",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
     { "Tor Browser",         NULL,     NULL,           0,         0,         1,         1,          0,           0,         0 },
-	{ NULL,                  "Discord", NULL,          1 << 2,    0,         1,         1,          0,           0,         1 },
+	{ "discord",             NULL,     NULL,           1 << 2,    0,         1,         1,          0,           0,         1 },
 	{ NULL,                  NULL,     "Event Tester", 0,         0,         0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,                  "spterm", NULL,           SPTAG(0),  0,         1,         1,          1,           1,        -1 },
 	{ NULL,                  "spfm",   NULL,           SPTAG(1),  0,         1,         1,          1,           1,        -1 },
 };
+
+/* Add client name to exclude for swallow, example loading window */
+/* To find window name, uncomment fprintf at the end in applyrules(Client *c) function */
+static const char *exclude_swallow[] = { "VirtualBox", "Discord Updater" };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -216,9 +220,9 @@ static Key keys[] = {
     { 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl --player=spotify play-pause") },
     { 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl --player=spotify stop") },
     { 0,    XK_Break,                          spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-    { MODKEY,                       XK_s,      spawn,          SHCMD("scrot -m '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/'") },
-    { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("sleep 0.2; scrot -s '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/'") },
-    { MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrot -u '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/'") },
+    { MODKEY,                       XK_s,      spawn,          SHCMD("scrot -m '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
+    { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("sleep 0.2; scrot -s '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
+    { MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrot -u '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
     { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pkill -RTMIN+12 dwmblocks") },
     { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("pgrep picom && killall picom || picom -b") },
     { MODKEY,                       XK_BackSpace, spawn,       SHCMD("$HOME/bin/lock") },

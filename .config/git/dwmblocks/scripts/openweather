@@ -30,10 +30,10 @@ if [ $? -ne 0 ]; then
     exit 0
 fi
 
-# Save API key and city code in openweatherdata.txt each on separated line
+# Save API key and city code in enviroment variables
 # City code can be found in the url of the searched city on openweatermap.org
-KEY="$(awk 'NR==1' ${XDG_DWMBLOCKS}/openweatherdata.txt)"
-CITY="$(awk 'NR==2' ${XDG_DWMBLOCKS}/openweatherdata.txt)"
+KEY="$OPENWEATHER_API"
+CITY="$OPENWEATHER_CITY"
 UNITS="metric"
 SYMBOL="°"
 

@@ -42,10 +42,14 @@ alias p='sudo pacman'
 [ -f /usr/bin/nvim ] && alias vim='nvim'
 alias video="youtube-dl -i --merge-output-format mp4 -o '~/Videos/YoutubeVideos/%(title)s.%(ext)s'"
 alias music="youtube-dl --add-metadata --extract-audio --audio-format mp3 -o '~/Music/%(title)s.%(ext)s'"
+alias ff='find . -type f -iname'
+alias fd='find . -type d -iname'
 alias cp='cp -i'
 alias mv='mv -i'
 # If ranger close set window title back to St
 alias ranger='ranger; echo -ne "\033]0;St\007"'
+alias dutch='trans en:nl'
+alias english='trans nl:en'
 
 alias la='ls -A'
 alias ll='ls -alF'

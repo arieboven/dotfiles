@@ -2,7 +2,8 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+[[ -f $HOME/.bashrc ]] && . $HOME/.bashrc
+[[ -f $HOME/.local/usr/personal ]] && . $HOME/.local/usr/personal   # For personal env variables
 
 [[ -d $HOME/.local/bin ]] && export PATH="$HOME/.local/bin:${PATH}"
 [[ -d $HOME/bin ]] && export PATH="$HOME/bin:${PATH}"
@@ -20,6 +21,7 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 export XDG_VIDEOS_DIR="$HOME/Videos"
 
 export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_LOCAL_HOME="$HOME/.local"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export QT_QPA_PLATFORMTHEME="qt5ct"

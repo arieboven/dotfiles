@@ -24,12 +24,6 @@ get_icon() {
     echo $icon
 }
 
-wget -q --spider https://openweathermap.org
-if [ $? -ne 0 ]; then
-    echo -n ''
-    exit 0
-fi
-
 # Save API key and city code in enviroment variables
 # City code can be found in the url of the searched city on openweatermap.org
 KEY="$OPENWEATHER_API"

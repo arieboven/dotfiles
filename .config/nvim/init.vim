@@ -55,13 +55,13 @@ set splitbelow splitright   " When use split new window below, or right
 
 " Toggle NERDTree
 nnoremap <leader>n :NERDTreeToggle<CR>
-" Replace all words
+" Replace all words match under cursor
 nnoremap <leader>r :%s/\<<C-r><C-w>\>//g<Left><Left>
 " Find word under cursor
 nnoremap <leader>f *``
 " clear highlighting search
 nnoremap <silent> <leader>c :nohlsearch<CR>
-" Insert empty line
+" Insert empty line below or above
 nnoremap <silent> <leader>o o<Esc>
 nnoremap <silent> <leader>O O<Esc>
 
@@ -83,7 +83,7 @@ vnoremap <silent> <C-c> "*y :let @+=@*<CR>
 map <C-p> "+p
 map <silent> <C-g> :YcmCompleter GoTo<CR>
 
-" autocmd BufNewFile *.py 0r ~/.vim/templates/python
+" Default text when opening new file
 autocmd BufNewFile *.py exec "normal! i# @author: Arie Boven\n\ndef main():\npass\n\nif __name__ == \"__main__\":\nmain()\<Esc>3kciw"
 autocmd BufNewFile *.c exec "normal! i/* @author Arie Boven */\n\n#include <stdio.h>\n\nint main() {\n\nreturn 0;\n}\<Esc>2k"
 

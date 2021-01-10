@@ -1,0 +1,18 @@
+#!/bin/sh
+
+revert() {
+    xset dpms 0 0 0                         # Disable monitor standby
+    dunstctl set-paused false               # Enable dunst notif
+    timeout 1s python $HOME/bin/access.py   # Fancy panel
+}
+
+trap revert HUP INT TERM
+xset +dpms dpms 0 0 20      # Set monitor off after 20 sec no movement
+dunstctl set-paused true    # Disable dunst notif
+if [[ $(xrandr | awk '/DP-4/ {print $2}') == "connected" && $(xrandr | awk '/DP-2/ {print $2}') == "connected" ]]; then
+    image=$XDG_LOCAL_HOME/share/backgrounds/lock2m.png
+else
+    image=$XDG_LOCAL_HOME/share/backgrounds/lock.png
+fi
+i3lock -f -n -t -i $image   # Lock
+revert

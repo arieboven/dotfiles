@@ -1,0 +1,10 @@
+#!/bin/sh
+
+choices="Lock\nSuspend"
+
+chosen=$(echo -e "$choices" | dmenu -i -b)
+
+[[ -z $chosen ]] && exit 1
+
+$HOME/bin/locker &
+[[ $chosen == "Suspend" ]] && sleep 5 && systemctl suspend

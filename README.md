@@ -3,12 +3,25 @@
 In this repo are my edited dotfiles which I use for my arch based system.\
 Feel free to take a look at how I have set things up and copy lines/files if you find something interesting. I have created most of these files by looking at others dotfiles and searching the web.
 
+
 Config files of:
-- nvim
+- dunst
 - git
   - st
+  - dmenu
   - dwm
   - dwmblocks
+- i3 (*old*)
+- mpv
+- nvim
+- picom
+- polybar (*old*)
+- spicetify
+- zathura
+
+
+I am currently using dwm as window manager so i3 is not up to date, but I will try to give it an update. I used polybar with i3, so that is also not up to date. I want to try bspwm, in which I can update polybar. Some configurations are not yet optimized for my use, in which I want to optimized over time.
+
 
 ## Installations
 ---

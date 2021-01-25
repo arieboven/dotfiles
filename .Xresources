@@ -1,60 +1,76 @@
+! Color Palet Afterglow
+#define BACKGROUND  #222222
+#define FOREGROUND  #d0d0d0
+#define COLOR0      #151515
+#define COLOR8      #505050
+#define COLOR1      #a54242
+#define COLOR9      #c63636
+#define COLOR2      #7b9246
+#define COLOR10     #7b9246
+#define COLOR3      #d3a04d
+#define COLOR11     #d3a04d
+#define COLOR4      #6c99bb
+#define COLOR12     #547c99
+#define COLOR5      #9f4e85
+#define COLOR13     #9f4e85
+#define COLOR6      #7dd6cf
+#define COLOR14     #7dd6cf
+#define COLOR7      #d0d0d0
+#define COLOR15     #f5f5f5
+
+#define DWM_COL0    #005577
+#define DWM_COL1    #444444
+
 Xcursor.theme: Breeze
 Xcursor.size: 32
 *.cursorColor: #5d5d5d
 
-! Color Palet Afterglow
-*.background: #222222
-*.foreground: #d0d0d0
+! Dwm resources
+dwm.normbgcolor: BACKGROUND
+dwm.normfgcolor: FOREGROUND
+dwm.normbordercolor: DWM_COL1 
+dwm.selbgcolor: DWM_COL0
+dwm.selfgcolor: COLOR15
+dwm.selbordercolor: DWM_COL0
+dwm.sellinecolor: COLOR3
+dwm.normlinecolor: DWM_COL1
+
+! Dmenu resources
+/* dmenu.font: "" */
+dmenu.background: BACKGROUND
+dmenu.foreground: FOREGROUND
+dmenu.selbackground: DWM_COL0
+dmenu.selforeground: COLOR15
+/* dmenu.normhighlightforeground: COLOR3 */
+/* dmenu.selhighlightforeground: COLOR3 */
+! Override norm and sel foreground
+/* dmenu.normselforeground: FOREGROUND */
+! Override norm and sel highlightforeground
+dmenu.highlightforeground: COLOR3
+
+*.background: BACKGROUND
+*.foreground: FOREGROUND
 !! Black
-*.color0: #151515
-*.color8: #505050
+*.color0: COLOR0
+*.color8: COLOR8
 !! Red
-*.color1: #a54242
-*.color9: #c63636
+*.color1: COLOR1
+*.color9: COLOR9
 !! Green
-*.color2: #7b9246
-*.color10: #7b9246
+*.color2: COLOR2
+*.color10: COLOR10
 !! Yellow
-*.color3: #d3a04d
-*.color11: #d3a04d
+*.color3: COLOR3
+*.color11: COLOR11
 !! Blue
-*.color4: #6c99bb
-*.color12: #547c99
+*.color4: COLOR4
+*.color12: COLOR12
 !! Magenta
-*.color5: #9f4e85
-*.color13: #9f4e85
+*.color5: COLOR5
+*.color13: COLOR13
 !! Cyan
-*.color6: #7dd6cf
-*.color14: #7dd6cf
+*.color6: COLOR6
+*.color14: COLOR14
 !! White
-*.color7: #d0d0d0
-*.color15: #f5f5f5
-
-/* ! Colors Palet */
-/* *.background:	Black */
-/* *.foreground:	white */
-/* !! Black */
-/* *.color0: #1b1918 */
-/* *.color8: #766e6b */
-/* !! Red */
-/* *.color1: #f22c40 */
-/* *.color9: #f22c40 */
-/* !! Green */
-/* *.color2: #5ab738 */
-/* *.color10: #5ab738 */
-/* !! Yellow */
-/* *.color3: #d5911a */
-/* *.color11: #d5911a */
-/* !! Blue */
-/* *.color4: #407ee7 */
-/* *.color12: #407ee7 */
-/* !! Magenta */
-/* *.color5: #6666ea */
-/* *.color13: #6666ea */
-/* !! Cyan */
-/* *.color6: #00ad9c */
-/* *.color14: #00ad9c */
-/* !! White */
-/* *.color7: #a8a19f */
-/* *.color15: #f1efee */
-
+*.color7: COLOR7
+*.color15: COLOR15

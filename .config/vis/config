@@ -1,0 +1,4 @@
+visualizer.spectrum.falloff.mode=top
+
+colors.override.terminal=false
+colors.scheme=default

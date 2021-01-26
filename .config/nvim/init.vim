@@ -84,8 +84,9 @@ map <C-p> "+p
 map <silent> <C-g> :YcmCompleter GoTo<CR>
 
 " Default text when opening new file
-autocmd BufNewFile *.py exec "normal! i# @author: Arie Boven\n\ndef main():\npass\n\nif __name__ == \"__main__\":\nmain()\<Esc>3kciw"
-autocmd BufNewFile *.c exec "normal! i/* @author Arie Boven */\n\n#include <stdio.h>\n\nint main() {\n\nreturn 0;\n}\<Esc>2k"
+autocmd BufNewFile *.py exec "normal! :0r skeleton/python\<CR>3j4l"
+autocmd BufNewFile *.c exec "normal! :0r skeleton/c\<CR>6ji\<Tab> \<ESC>"
+autocmd BufNewFile *.sh exec "normal! :0r skeleton/sh\<CR>2j"
 
 " Statusline
 let g:currentmode={

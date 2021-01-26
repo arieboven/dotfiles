@@ -84,9 +84,16 @@ map <C-p> "+p
 map <silent> <C-g> :YcmCompleter GoTo<CR>
 
 " Default text when opening new file
-autocmd BufNewFile *.py exec "normal! :0r skeleton/python\<CR>3j4l"
-autocmd BufNewFile *.c exec "normal! :0r skeleton/c\<CR>6ji\<Tab> \<ESC>"
-autocmd BufNewFile *.sh exec "normal! :0r skeleton/sh\<CR>2j"
+autocmd BufNewFile *.py exec "normal! :0r $XDG_CONFIG_HOME/nvim/skeleton/python\<CR>3j4l"
+autocmd BufNewFile *.c exec "normal! :0r $XDG_CONFIG_HOME/nvim/skeleton/c\<CR>6ji\<Tab> \<ESC>"
+autocmd BufNewFile *.sh exec "normal! :0r $XDG_CONFIG_HOME/nvim/skeleton/sh\<CR>2j"
+
+" Specific Neovim commands
+" if has('nvim')
+"     " Neovim specific commands
+" else
+"     " Standard vim specific commands
+" endif
 
 " Statusline
 let g:currentmode={

@@ -1,9 +1,42 @@
+# Zathura colors
 set default-bg rgba(0,0,0,0.6)
-set statusbar-bg rgba(0,0,0,0.8)
-set notification-bg "#2d2d2d"
-set notification-fg "#d2d2d2"
+set default-fg "#F7F7F6" #01
 
+set statusbar-fg "#B0B0B0" #04
+set statusbar-bg rgba(0,0,0,0.8)
+
+set inputbar-bg "#151515" #00 currently not used
+set inputbar-fg "#FFFFFF" #02
+
+set notification-error-bg "#AC4142" #08
+set notification-error-fg "#151515" #00
+
+set notification-warning-bg "#AC4142" #08
+set notification-warning-fg "#151515" #00
+
+set highlight-color "#F4BF75" #0A
+set highlight-active-color "#6A9FB5" #0D
+
+set completion-highlight-fg "#151515" #02
+set completion-highlight-bg "#90A959" #0C
+
+set completion-bg "#303030" #02
+set completion-fg "#E0E0E0" #0C
+
+set notification-bg "#90A959" #0B
+set notification-fg "#151515" #00
+
+# General settings
+set adjust-open "best-fit"
+set sandbox none
 set selection-clipboard clipboard
+set window-title-basename true
+set statusbar-basename true
+set page-padding 5
+set statusbar-h-padding 10
+set statusbar-v-padding 0
+set incremental-search true
+set scroll-page-aware true
 
 # Keybindings
 map u scroll half-up
@@ -11,4 +44,9 @@ map d scroll half-down
 map D toggle_page_mode
 map K zoom in
 map J zoom out
+map <A-.> zoom in
+map <A-,> zoom out
+map r reload
+map R rotate
+map p print
 map i recolor

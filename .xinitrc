@@ -36,7 +36,7 @@ picom -b
 
 dwmblocks &
 
-$HOME/bin/dwm/startup.sh &
+$XDG_CONFIG_HOME/git/dwm/startup &
 
 # Exec dwm
 exec dwm 2> ~/.cache/dwm.log

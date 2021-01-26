@@ -39,6 +39,7 @@ fi
 # My custom aliases
 alias c='clear'
 alias p='sudo pacman'
+alias g='git'
 [ -f /usr/bin/nvim ] && alias vim='nvim'
 alias video="youtube-dl -i --merge-output-format mp4 -o '~/Videos/YoutubeVideos/%(title)s.%(ext)s'"
 alias music="youtube-dl --add-metadata --extract-audio --audio-format mp3 -o '~/Music/%(title)s.%(ext)s'"
@@ -66,6 +67,7 @@ alias server='ssh -p 2048 account@192.168.178.20'
 
 # Alias for git repo of dotfiles 
 function config(){
+    # GIT_DIR=$HOME/dotfiles GIT_WORK_TREE=$HOME /usr/bin/git "$@"
     /usr/bin/git --git-dir=$HOME/dotfiles --work-tree=$HOME "$@"
     if [ "$1" == "restore" ]; then
         # The config files of the suckless build are hard linked to the git repos of the build
@@ -77,6 +79,7 @@ function config(){
         ln -f $HOME/.config/git/dwmblocks/blocks.h $HOME/git/dwmblocks/blocks.h
     fi
 }
+[ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git && __git_complete g __git_main; __git_complete config __git_main
 
 # Run neofetch add startup terminal
 #neofetch

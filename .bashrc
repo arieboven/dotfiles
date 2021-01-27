@@ -79,6 +79,7 @@ function config(){
         ln -f $HOME/.config/git/dwmblocks/blocks.h $HOME/git/dwmblocks/blocks.h
     fi
 }
+
 [ -f /usr/share/bash-completion/completions/git ] && . /usr/share/bash-completion/completions/git && __git_complete g __git_main; __git_complete config __git_main
 
 # Run neofetch add startup terminal

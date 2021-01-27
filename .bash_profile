@@ -30,6 +30,7 @@ source $XDG_LOCAL_HOME/bin/virtualenvwrapper.sh
 
 export QT_QPA_PLATFORMTHEME="qt5ct"
 
+export _JAVA_AWT_WM_NONREPARENTING=1
 export XDG_DWMBLOCKS="$HOME/.config/git/dwmblocks/scripts"
 
 if [[ "$(tty)" = "/dev/tty1" ]]; then

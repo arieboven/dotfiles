@@ -17,8 +17,8 @@ xset dpms 0 0 0
 lxsession &
 
 # Start clipmenu
-systemctl --user import-environment DISPLAY
-systemctl --user start clipmenud
+# systemctl --user import-environment DISPLAY
+# systemctl --user start clipmenud
 
 # Start Dunst notification daemon
 dunst &

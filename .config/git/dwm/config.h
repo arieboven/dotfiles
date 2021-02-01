@@ -26,12 +26,12 @@ static char normlinecolor[]   = "#444444";
 static const unsigned int baralpha = 0xd0;
 static const unsigned int borderalpha = OPAQUE;
 static char *colors[][3] = {
-       /*               fg           bg           border   */
-       [SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
-       [SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
+	/*               fg           bg           border   */
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },
+	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },
 };
 static char *lineColors[]     = {
-    sellinecolor , normlinecolor
+	sellinecolor , normlinecolor
 };
 static const unsigned int alphas[][3]      = {
 	/*               fg      bg        border     */
@@ -51,61 +51,54 @@ static const char *tags[][TAGLENGTH] = {
 };
 
 typedef struct {
-    const char *name;
-    const void *cmd;
+	const char *name;
+	const void *cmd;
 } Sp;
 const char *spcmd1[] = {"st", "-n", "spterm", "-g", "120x34", "-A", "1", "-U", "1", NULL };
 const char *spcmd2[] = {"st", "-n", "spfm", "-g", "144x41", "-A", "1", "-U", "1", "-e", "ranger", NULL };
 static Sp scratchpads[] = {
-    /* name          cmd  */
-    {"spterm",      spcmd1},
-    {"spranger",    spcmd2},
+	/* name          cmd  */
+	{"spterm",      spcmd1},
+	{"spranger",    spcmd2},
 };
 
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
-     *	switchtag has different options: 
-     *  - 0 is default behaviour
-     *  - 1 automatically moves you to the tag of the newly opened application
-     *  - 2 enables the tag of the newly opened application in addition to your existing enabled tags
-     *  - 3 as 1, but closing that window reverts the view back to what it was previously (*)
-     *  - 4 as 2, but closing that window reverts the view back to what it was previously (*)
+		*	switchtag has different options: 
+		*  - 0 is default behaviour
+		*  - 1 automatically moves you to the tag of the newly opened application
+		*  - 2 enables the tag of the newly opened application in addition to your existing enabled tags
+		*  - 3 as 1, but closing that window reverts the view back to what it was previously (*)
+		*  - 4 as 2, but closing that window reverts the view back to what it was previously (*)
 	 */
-    /*
-     * In the function swallow(Client *p, Client *c) in dwm.c
-     * can certain windows be blocked for swallowing if there are loading windows
-    */
 	/* class                 instance  title           tags mask  switchtag  iscentered isfloating  isterminal   noswallow  monitor */
-	{ "Gimp",                NULL,     NULL,           1 << 1,    1,         1,         1,          0,           0,        -1 },
-	{ NULL,                  NULL,     "accessgranted", 0,        0,         1,         1,          0,           0,         0 },
-	{ "Firefox",             NULL,     NULL,           1 << 8,    0,         0,         0,          0,           0,        -1 },
+	{ "Gimp",                NULL,     NULL,           1 << 1,    3,         1,         1,          0,           0,        -1 },
+	{ NULL,                  NULL,     "accessgranted",0,         0,         1,         1,          0,           0,         0 },
 	{ "St",                  NULL,     NULL,           0,         0,         0,         0,          1,           0,        -1 },
 	{ "Spotify",             NULL,     NULL,           1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ "conky",               NULL,     NULL,           1 << 0,    0,         0,         0,          0,           0,         1 },
 	{ NULL,                  NULL,     "tty-clock",    1 << 0,    0,         0,         0,          0,           0,         1 },
 	{ NULL,                  NULL,     "vis",          1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ "VirtualBox Manager",  NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         1 },
-    { "minecraft-launcher",  NULL,     NULL,           1 << 4,    1,         1,         0,          0,           0,         0 },
-    { "libreoffice-startcenter", NULL, NULL,           1 << 3,    1,         0,         0,          0,           0,         0 },
-    { "vlc",                 NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
-    { "Kodi",                NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
-    { "kdenlive",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-    { "Ghb",                 NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-    { "Blender",             NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-    { "obs",                 NULL,     NULL,           1 << 3,    1,         0,         0,          0,           0,         1 },
-    { "Inkscape",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-    { "Tor Browser",         NULL,     NULL,           0,         0,         1,         1,          0,           0,         0 },
-	{ "discord",             NULL,     NULL,           1 << 2,    0,         1,         1,          0,           0,         1 },
+	{ "VirtualBox",          NULL,     NULL,           1 << 1,    0,         0,         0,          0,           1,         1 },
+	{ NULL, NULL,   "Oracle VM VirtualBox Manager",    1 << 1,    3,         0,         0,          0,           0,         1 },
+	{ "minecraft-launcher",  NULL,     NULL,           1 << 4,    1,         1,         0,          0,           0,         0 },
+	{ "libreoffice-startcenter", NULL, NULL,           1 << 3,    3,         0,         0,          0,           0,         0 },
+	{ "Soffice",             NULL,     NULL,           1 << 3,    4,         0,         0,          0,           0,        -1 },
+	{ "vlc",                 NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
+	{ "Kodi",                NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
+	{ "kdenlive",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
+	{ "Ghb",                 NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
+	{ "Blender",             NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
+	{ "obs",                 NULL,     NULL,           1 << 3,    3,         0,         0,          0,           0,         1 },
+	{ "Inkscape",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
+	{ "Tor Browser",         NULL,     NULL,           0,         0,         1,         1,          0,           0,         0 },
+	{ NULL,                  NULL,     "Discord",      1 << 2,    3,         1,         1,          0,           0,         1 },
+	{ NULL,                  NULL,  "Discord Updater", 1 << 2,    0,         1,         1,          0,           1,         1 },
 	{ NULL,                  NULL,     "Event Tester", 0,         0,         0,         0,          0,           1,        -1 }, /* xev */
 	{ NULL,                  "spterm", NULL,           SPTAG(0),  0,         1,         1,          1,           1,        -1 },
 	{ NULL,                  "spfm",   NULL,           SPTAG(1),  0,         1,         1,          1,           1,        -1 },
 };
-
-/* Add client name to exclude for swallow, example loading window */
-/* To find window name, uncomment fprintf at the end in applyrules(Client *c) function */
-static const char *exclude_swallow[] = { "VirtualBox", "Discord Updater" };
 
 /* layout(s) */
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
@@ -142,9 +135,9 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
 	{ MODKEY|ShiftMask,             KEY,      tag,            {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} }, \
-    { MODKEY|SECMODKEY,             KEY,      viewnextmon,    {.ui = 1 << TAG} }, \
-    { MODKEY|SECMODKEY|ShiftMask,   KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
-    { MODKEY|SECMODKEY|ControlMask, KEY,      tagswaptonextmon, {.ui = 1 << TAG} },
+	{ MODKEY|SECMODKEY,             KEY,      viewnextmon,    {.ui = 1 << TAG} }, \
+	{ MODKEY|SECMODKEY|ShiftMask,   KEY,      tagnextmon,     {.ui = 1 << TAG} }, \
+	{ MODKEY|SECMODKEY|ControlMask, KEY,      tagswaptonextmon, {.ui = 1 << TAG} },
 #define STACKKEYS(MOD,ACTION) \
 	{ MOD, XK_j,     ACTION##stack, {.i = INC(+1) } }, \
 	{ MOD, XK_k,     ACTION##stack, {.i = INC(-1) } }, \
@@ -168,9 +161,9 @@ static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,                       XK_Return, spawn,          {.v = termcmd } },
-    { MODKEY,                       XK_grave,  togglescratch,  {.ui = 0 } },
-    { MODKEY|ShiftMask,             XK_grave,  togglescratch,  {.ui = 1 } },
-    { MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
+	{ MODKEY,                       XK_grave,  togglescratch,  {.ui = 0 } },
+	{ MODKEY|ShiftMask,             XK_grave,  togglescratch,  {.ui = 1 } },
+	{ MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_d,      toggleattach,   {0} },
 	STACKKEYS(MODKEY,                          focus)
@@ -179,7 +172,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
-    { MODKEY,                       XK_r,      resetlayout,    {0} },
+	{ MODKEY,                       XK_r,      resetlayout,    {0} },
 	{ MODKEY|ShiftMask,             XK_Return, zoom,           {0} },
 	{ MODKEY|SECMODKEY,             XK_u,      incrgaps,       {.i = +1 } },
 	{ MODKEY|SECMODKEY|ShiftMask,   XK_u,      incrgaps,       {.i = -1 } },
@@ -196,8 +189,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_m,      setlayout,      {.v = &layouts[1]} },
 	{ MODKEY,                       XK_y,      setlayout,      {.v = &layouts[2]} },
 	{ MODKEY,                       XK_u,      setlayout,      {.v = &layouts[5]} },
-    { MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
-    { MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
+	{ MODKEY|ControlMask,           XK_comma,  cyclelayout,    {.i = -1 } },
+	{ MODKEY|ControlMask,           XK_period, cyclelayout,    {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_f,      togglefullscreen, {0} },
 	{ MODKEY,                       XK_space,  setlayout,      {0} },
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
@@ -218,22 +211,22 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-    { 0,    XF86XK_AudioMute,                  spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
-    { 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pamixer -i 5 -u; kill -44 $(pidof dwmblocks)") },
-    { 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("pamixer -d 5 -u; kill -44 $(pidof dwmblocks)") },
-    { 0,    XF86XK_AudioPrev,                  spawn,          SHCMD("playerctl --player=spotify previous") },
-    { 0,    XF86XK_AudioNext,                  spawn,          SHCMD("playerctl --player=spotify next") },
-    { 0,    XF86XK_AudioPause,                 spawn,          SHCMD("playerctl --player=spotify play-pause") },
-    { 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl --player=spotify play-pause") },
-    { 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl --player=spotify stop") },
-    { 0,    XK_Break,                          spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
-    { MODKEY,                       XK_s,      spawn,          SHCMD("scrot -m '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
-    { MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("sleep 0.2; scrot -s '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
-    { MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrot -u '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
-    { MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pkill -RTMIN+12 dwmblocks") },
-    { MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("pgrep picom && killall picom || picom -b") },
-    { MODKEY,                       XK_BackSpace, spawn,       SHCMD("$HOME/bin/lock") },
-    { MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+	{ 0,    XF86XK_AudioMute,                  spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+	{ 0,    XF86XK_AudioRaiseVolume,           spawn,          SHCMD("pamixer -i 5 -u; kill -44 $(pidof dwmblocks)") },
+	{ 0,    XF86XK_AudioLowerVolume,           spawn,          SHCMD("pamixer -d 5 -u; kill -44 $(pidof dwmblocks)") },
+	{ 0,    XF86XK_AudioPrev,                  spawn,          SHCMD("playerctl --player=spotify previous") },
+	{ 0,    XF86XK_AudioNext,                  spawn,          SHCMD("playerctl --player=spotify next") },
+	{ 0,    XF86XK_AudioPause,                 spawn,          SHCMD("playerctl --player=spotify play-pause") },
+	{ 0,    XF86XK_AudioPlay,                  spawn,          SHCMD("playerctl --player=spotify play-pause") },
+	{ 0,    XF86XK_AudioStop,                  spawn,          SHCMD("playerctl --player=spotify stop") },
+	{ 0,    XK_Break,                          spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") },
+	{ MODKEY,                       XK_s,      spawn,          SHCMD("scrot -m '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          SHCMD("sleep 0.2; scrot -s '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
+	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrot -u '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
+	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pkill -RTMIN+12 dwmblocks") },
+	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("pgrep picom && killall picom || picom -b") },
+	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("$HOME/bin/lock") },
+	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
 	{ MODKEY|ControlMask|ShiftMask, XK_BackSpace, quit,        {1} },
 };

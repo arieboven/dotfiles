@@ -1,0 +1,35 @@
+#!/bin/sh
+
+if [ -d /mnt/mount/sdcard/DCIM/100CANON ] ; then
+    LOCATION=/mnt/mount/sdcard/DCIM/100CANON/
+else 
+    echo "No Photo's detected."
+    exit 1
+fi
+
+if [ $(stat -c "%u" $LOCATION) != $UID ]; then
+    echo "You have not the right premission to delete the files"
+    exit 1
+fi
+
+DEST=/home/$USER/Pictures/Photo_Camera
+
+#notify-send "Photo transfer started."
+
+echo "Sorting JPG photo's."
+exiftool '-Directory<CreateDate' -d $DEST/%Y/%y_%m-%B/JPG -r -ext JPG $LOCATION
+echo "Sorting RAW Photo's."
+exiftool '-Directory<CreateDate' -d $DEST/%Y/%y_%m-%B/RAW -r -ext CR2 $LOCATION
+echo "Sorting video's & Others."
+exiftool '-Directory<CreateDate' -d $DEST/%Y/%y_%m-%B/MP4 -r -ext MP4 $LOCATION
+exiftool '-Directory<CreateDate' -d $DEST/%Y/%y_%m-%B/Other -r $LOCATION
+
+echo ""
+if [ "$(ls -A $LOCATION)" ]; then
+    echo "Directory $LOCATION is not empty, this files are still in there:"
+    ls $LOCATION
+else
+    echo "The directory $LOCATION is empty, all files are moved."
+fi
+
+#notify-send "Photo transfer finished."

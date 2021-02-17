@@ -1,5 +1,5 @@
 #!/bin/bash
 
 st -A 0.6 -U 0.6 -e vis &
-st -A 0.4 -U 0.4 -f "Monospace:size=20:antialias=true:autohint=true" -e tty-clock -n -t -C 7 -c -x -f '%A, %d-%B-%Y' &
+st -A 0.4 -U 0.4 -f "Monospace:size=20:antialias=true:autohint=true" -e tty-clock -n -t -C 7 -c -x -f '%A, %d-%b-%Y' &
 spotify >>/tmp/spotify.log 2>&1 &

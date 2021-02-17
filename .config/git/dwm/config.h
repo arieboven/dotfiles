@@ -164,6 +164,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_grave,  togglescratch,  {.ui = 0 } },
 	{ MODKEY|ShiftMask,             XK_grave,  togglescratch,  {.ui = 1 } },
 	{ MODKEY,                       XK_b,      spawn,          SHCMD("firefox") },
+	{ MODKEY,                       XK_e,      spawn,          SHCMD("$HOME/bin/searchWeb") },
 	{ MODKEY|ShiftMask,             XK_b,      togglebar,      {0} },
 	{ MODKEY|ShiftMask,             XK_d,      toggleattach,   {0} },
 	STACKKEYS(MODKEY,                          focus)

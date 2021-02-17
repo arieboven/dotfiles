@@ -1,0 +1,26 @@
+#!/bin/sh
+
+browser=surf
+searchEngine="https://duckduckgo.com/?q="
+
+searchText=$(dmenu -b -p "Search web: " <&-) || exit 1
+
+# If url: open url in browser
+curl --output /dev/null --silent --head --fail "$searchText" && $browser "$searchText" && exit 0
+
+# Get results with 'ddgr'. If string contains duckduckgo bang it will open in browser.
+rawSearchResult=$(BROWSER=$browser ddgr -x --np "$searchText")
+[[ -z $rawSearchResult ]] && exit 0
+
+searchResult=$(echo -e "$rawSearchResult" | awk '$1 ~ /^ *[0-9]/{printf "%s | ", $0;getline;gsub(/ /, "", $0);print;}' | cut -c 6- | awk '{print NR-1,$0}')
+
+searchUrl=$(echo -e "$rawSearchResult" | awk '$1 ~ /^ *[0-9]/{getline;gsub(/ /, "", $0);print;}')
+[[ -z searchResult ]] && exit 1
+
+# Choose from index
+searchChose=$(echo -e "$searchResult" | dmenu -b -i -l 10) || exit 1
+
+urlIndex=$(echo "$searchResult" | grep -n "$searchChose"| grep -Eo '^[^:]+')
+
+# Open selected url in browser
+$browser "$(echo "$searchUrl" | sed "${urlIndex}q;d")"

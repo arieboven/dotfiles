@@ -1,0 +1,46 @@
+#!/bin/sh
+
+choises="Mount\nUnmount"
+
+chose=$(echo -e "$choises" | dmenu -i -b -p "Mount chose: ") || exit 1
+
+if [ "$chose" == "Mount" ]; then
+    # Find removable devices
+    usbdrives="$(lsblk -rpo +RM | grep part | awk '$7==1{printf "%s (%s)\n",$1,$4}')"
+
+    if [ -z "$usbdrives" ]; then
+        # No devices fount, exit
+        echo "No devices fount to mount"
+        exit 1
+    fi
+
+    # Devices fount
+    mountDev="$(echo -e "$usbdrives" | dmenu -i -b -p "Which device do you want to mount:")" || exit 1
+
+    # Find mountable dirs in /mnt/mount
+    dest="$(find /mnt/mount/ -maxdepth 1 -mindepth 1 -type d$(mount | grep /mnt/mount | awk '{printf " -not -path %s",$3}') -printf '/%f\n' | sort| dmenu -i -b -p "In which folder do you want to mount:")" || exit 1
+    drive=$(echo $mountDev | awk '{print $1}')
+    destDir="/mnt/mount$dest"
+
+    # mount
+    sudo mount -o uid=$UID,gid=$(id -g $USER) $drive $destDir
+elif [ "$chose" == "Unmount" ]; then
+    # Find removable devices
+    usbdrives="$(lsblk -rp | grep part | awk '$3==1 && $7!=""{printf "%s (%s) [%s]\n",$7,$4,$1}')"
+
+    if [ -z "$usbdrives" ]; then
+        # No devices fount, exit
+        echo "No devices fount to unmount"
+        exit 1
+    fi
+
+    # Devices fount
+    unMountDev="$(echo -e "$usbdrives" | dmenu -i -b -p "Which device do you want to unmount:")" || exit 1
+
+    device="$(echo "$unMountDev" | awk '{print $1}')"
+    mount | grep "$device" &>/dev/null || exit 1
+    # unmount
+    sudo umount "$device"
+fi
+
+# TODO notify when mounted and unmounted. Sometimes unmounting does take some time.

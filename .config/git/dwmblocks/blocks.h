@@ -9,7 +9,7 @@ static const Block blocks[] = {
 
     {"", "$XDG_DWMBLOCKS/volume",       0,      10  },
 
-    {"", "$XDG_DWMBLOCKS/network",      30,     11  },
+    {"", "$XDG_DWMBLOCKS/network",      0,      11  },
 
     {"", "$XDG_DWMBLOCKS/time",		    1,		0   },
     {"", "$XDG_DWMBLOCKS/date",		    1,		0   },

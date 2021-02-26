@@ -1,16 +1,41 @@
 #!/bin/bash
 
-icon=""
+icon=''
+interface=''
 
-iface_type=$(nmcli dev | grep connected | tr -s ' ' | cut -d' ' -f2)
-iface_name=$(nmcli dev | grep connected | awk '{print $1}' | head -1)
+profile=$(netctl list | grep '*' | cut -c 3-)
 
-if [ -z "$iface_name" ]; then
+if [ -z "$profile" ]; then
+    echo -ne "Down"
+fi
+
+case $profile in
+    'ethernet_static')
+        icon='E: '
+        interface='eno1'
+        ;;
+    'wireless_static')
+        icon='W: '
+        interface='wlan0'
+        ;;
+    'bond_failover')
+        icon='bo: '
+        interface='bond0'
+        ;;
+    'bridge_ethernet')
+        icon='br: '
+        interface='br0'
+        ;;
+    *)
+        exit 1
+        ;;
+esac
+
+ip_addr=$(ip address show "$interface" | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | head -1)
+ip_state=$(ip address show "$interface" | grep 'state UP')
+
+if [ -z "$ip_state" ]; then
     echo -ne "Down"
 else
-    icon="$(echo ${iface_type^} | head -c 1): "
-
-    ipaddr="$(ip addr show "$iface_name" | grep -oP '(?<=inet )[^ ]*' | cut -f1 -d'/' | head -1)"
-
-    echo -n "$icon$ipaddr"
+    echo -ne "$icon$ip_addr"
 fi

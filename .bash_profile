@@ -25,7 +25,7 @@ export XDG_LOCAL_HOME="$HOME/.local"
 export XDG_CACHE_HOME="$HOME/.cache"
 
 export WORKON_HOME="$XDG_LOCAL_HOME/usr/virtualenv"
-export PROJECT_HOME="$XDG_DOCUMENTS_DIR/Programming"
+export PROJECT_HOME="$XDG_DOCUMENTS_DIR/programming"
 source $XDG_LOCAL_HOME/bin/virtualenvwrapper.sh
 
 export QT_QPA_PLATFORMTHEME="qt5ct"

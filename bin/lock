@@ -2,7 +2,7 @@
 
 choices="Lock\nSuspend"
 
-chosen=$(echo -e "$choices" | dmenu -i -b)
+chosen=$(echo -e "$choices" | dmenu -i -b -p "Option:")
 
 [[ -z $chosen ]] && exit 1
 

@@ -228,10 +228,11 @@ static Key keys[] = {
 	{ MODKEY|ControlMask,           XK_s,      spawn,          SHCMD("scrot -u '%Y-%m-%d_%H%M%S.png' -e 'mv $f ~/Pictures/screenshots/'") },
 	{ MODKEY|ShiftMask,             XK_m,      spawn,          SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle ; pkill -RTMIN+12 dwmblocks") },
 	{ MODKEY|ShiftMask,             XK_t,      spawn,          SHCMD("pgrep picom && killall picom || picom -b") },
-	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("$HOME/bin/lock") },
+	{ MODKEY,                       XK_BackSpace, spawn,       SHCMD("$HOME/bin/locker") },
 	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
-	{ MODKEY|ShiftMask,             XK_BackSpace, quit,        {0} },
+	{ MODKEY|ShiftMask,             XK_BackSpace, spawn,       SHCMD("$HOME/.config/git/dwm/powermenu") },
 	{ MODKEY|ControlMask|ShiftMask, XK_BackSpace, quit,        {1} },
+	{ MODKEY|SECMODKEY|ControlMask, XK_BackSpace, quit,        {0} },
 };
 
 /* button definitions */

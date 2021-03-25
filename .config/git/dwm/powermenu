@@ -1,0 +1,21 @@
+#!/bin/sh
+
+options="Suspend\nReboot\nPoweroff"
+
+choice=$(echo -e "$options" | dmenu -b -i -p "Powermenu option:") || exit 1
+
+case "$choice" in
+    "Suspend")
+        $HOME/bin/locker &
+        sleep 5 && systemctl suspend
+        ;;
+    "Reboot")
+        prompt "Do you want to reboot?:" "reboot"
+        ;;
+    "Poweroff")
+        prompt "Do you want to shutdown?:" "shutdown -h now"
+        ;;
+    *)
+        echo "Invalid option"
+        ;;
+esac

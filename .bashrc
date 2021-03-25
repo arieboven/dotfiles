@@ -77,6 +77,7 @@ function config(){
         ln -f $HOME/.config/git/dwm/config.h $HOME/git/dwm/config.h
         ln -f $HOME/.config/git/st/config.h $HOME/git/st/config.h
         ln -f $HOME/.config/git/dwmblocks/blocks.h $HOME/git/dwmblocks/blocks.h
+        ln -f $HOME/.config/git/slock/config.h $HOME/git/slock/config.h
     fi
 }
 

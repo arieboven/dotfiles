@@ -73,31 +73,33 @@ static const Rule rules[] = {
 		*  - 3 as 1, but closing that window reverts the view back to what it was previously (*)
 		*  - 4 as 2, but closing that window reverts the view back to what it was previously (*)
 	 */
-	/* class                 instance  title           tags mask  switchtag  iscentered isfloating  isterminal   noswallow  monitor */
-	{ "Gimp",                NULL,     NULL,           1 << 1,    3,         1,         1,          0,           0,        -1 },
-	{ NULL,                  NULL,     "accessgranted",0,         0,         1,         1,          0,           0,         0 },
-	{ "St",                  NULL,     NULL,           0,         0,         0,         0,          1,           0,        -1 },
-	{ "Spotify",             NULL,     NULL,           1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ NULL,                  NULL,     "tty-clock",    1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ NULL,                  NULL,     "vis",          1 << 0,    0,         0,         0,          0,           0,         1 },
-	{ "VirtualBox",          NULL,     NULL,           1 << 1,    0,         0,         0,          0,           1,         1 },
-	{ NULL, NULL,   "Oracle VM VirtualBox Manager",    1 << 1,    3,         0,         0,          0,           0,         1 },
-	{ "minecraft-launcher",  NULL,     NULL,           1 << 4,    1,         1,         0,          0,           0,         0 },
-	{ "libreoffice-startcenter", NULL, NULL,           1 << 3,    3,         0,         0,          0,           0,         0 },
-	{ "Soffice",             NULL,     NULL,           1 << 3,    4,         0,         0,          0,           0,        -1 },
-	{ "vlc",                 NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
-	{ "Kodi",                NULL,     NULL,           1 << 2,    1,         0,         0,          0,           0,         0 },
-	{ "kdenlive",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-	{ "Ghb",                 NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-	{ "Blender",             NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-	{ "obs",                 NULL,     NULL,           1 << 3,    3,         0,         0,          0,           0,         1 },
-	{ "Inkscape",            NULL,     NULL,           1 << 1,    1,         0,         0,          0,           0,         0 },
-	{ "Tor Browser",         NULL,     NULL,           0,         0,         1,         1,          0,           0,         0 },
-	{ NULL,                  NULL,     "Discord",      1 << 2,    3,         1,         1,          0,           0,         1 },
-	{ NULL,                  NULL,  "Discord Updater", 1 << 2,    0,         1,         1,          0,           1,         1 },
-	{ NULL,                  NULL,     "Event Tester", 0,         0,         0,         0,          0,           1,        -1 }, /* xev */
-	{ NULL,                  "spterm", NULL,           SPTAG(0),  0,         1,         1,          1,           1,        -1 },
-	{ NULL,                  "spfm",   NULL,           SPTAG(1),  0,         1,         1,          1,           1,        -1 },
+	/* class                 instance  title           tags mask  exactname switchtag  iscentered isfloating  isterminal   noswallow  monitor */
+	{ "Gimp",                NULL,     NULL,           1 << 1,    0,       3,         1,         1,          0,           0,        -1 },
+	{ NULL,                  NULL,     "accessgranted",0,         0,       0,         1,         1,          0,           0,         0 },
+	{ "St",                  NULL,     NULL,           0,         0,       0,         0,         0,          1,           0,        -1 },
+	{ "Spotify",             NULL,     NULL,           1 << 0,    0,       0,         0,         0,          0,           0,         1 },
+	{ NULL,                  NULL,     "tty-clock",    1 << 0,    0,       0,         0,         0,          0,           0,         1 },
+	{ NULL,                  NULL,     "vis",          1 << 0,    0,       0,         0,         0,          0,           0,         1 },
+	{ "VirtualBox",          NULL,     NULL,           1 << 1,    1,       0,         0,         0,          0,           1,         1 },
+	{ NULL, NULL,   "Oracle VM VirtualBox Manager",    1 << 1,    0,       3,         0,         0,          0,           0,         1 },
+	{ "VirtualBoxVM",        NULL,  "VirtualBoxVM",    1 << 8,    1,       0,         0,         0,          0,           1,         0 },
+	{ "VirtualBoxVM", NULL, "Oracle VM VirtualBox",    1 << 8,    0,       3,         0,         0,          0,           0,         0 },
+	{ "minecraft-launcher",  NULL,     NULL,           1 << 4,    0,       1,         1,         0,          0,           0,         0 },
+	{ "libreoffice-startcenter", NULL, NULL,           1 << 3,    0,       3,         0,         0,          0,           0,         0 },
+	{ "Soffice",             NULL,     NULL,           1 << 3,    0,       4,         0,         0,          0,           0,        -1 },
+	{ "vlc",                 NULL,     NULL,           1 << 2,    0,       1,         0,         0,          0,           0,         0 },
+	{ "Kodi",                NULL,     NULL,           1 << 2,    0,       1,         0,         0,          0,           0,         0 },
+	{ "kdenlive",            NULL,     NULL,           1 << 1,    0,       1,         0,         0,          0,           0,         0 },
+	{ "Ghb",                 NULL,     NULL,           1 << 1,    0,       1,         0,         0,          0,           0,         0 },
+	{ "Blender",             NULL,     NULL,           1 << 1,    0,       1,         0,         0,          0,           0,         0 },
+	{ "obs",                 NULL,     NULL,           1 << 3,    0,       3,         0,         0,          0,           0,         1 },
+	{ "Inkscape",            NULL,     NULL,           1 << 1,    0,       1,         0,         0,          0,           0,         0 },
+	{ "Tor Browser",         NULL,     NULL,           0,         0,       0,         1,         1,          0,           0,         0 },
+	{ NULL,                  NULL,     "Discord",      1 << 2,    0,       3,         1,         1,          0,           0,         1 },
+	{ NULL,                  NULL,  "Discord Updater", 1 << 2,    0,       0,         1,         1,          0,           1,         1 },
+	{ NULL,                  NULL,     "Event Tester", 0,         0,       0,         0,         0,          0,           1,        -1 }, /* xev */
+	{ NULL,                  "spterm", NULL,           SPTAG(0),  0,       0,         1,         1,          1,           1,        -1 },
+	{ NULL,                  "spfm",   NULL,           SPTAG(1),  0,       0,         1,         1,          1,           1,        -1 },
 };
 
 /* layout(s) */

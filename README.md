@@ -11,6 +11,7 @@ Config files of:
   - dmenu
   - dwm
   - dwmblocks
+  - slock
 - i3 (*old*)
 - mpv
 - nvim

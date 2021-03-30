@@ -23,7 +23,7 @@ if [ "$chose" == "Mount" ]; then
     destDir="/mnt/mount$dest"
 
     # mount
-    sudo mount -o uid=$UID,gid=$(id -g $USER) $drive $destDir
+    sudo mount -o uid=$UID,gid=$(id -g $USER) $drive $destDir && notify-send mount "Device succesfully mounted"
 elif [ "$chose" == "Unmount" ]; then
     # Find removable devices
     usbdrives="$(lsblk -rp | grep part | awk '$3==1 && $7!=""{printf "%s (%s) [%s]\n",$7,$4,$1}')"
@@ -40,7 +40,5 @@ elif [ "$chose" == "Unmount" ]; then
     device="$(echo "$unMountDev" | awk '{print $1}')"
     mount | grep "$device" &>/dev/null || exit 1
     # unmount
-    sudo umount "$device"
+    sudo umount "$device" && notify-send mount "Device succesfully unmounted"
 fi
-
-# TODO notify when mounted and unmounted. Sometimes unmounting does take some time.

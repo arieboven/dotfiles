@@ -1,7 +1,7 @@
 #!/bin/sh
 
-if [ -d /mnt/mount/sdcard/DCIM/100CANON ] ; then
-    LOCATION=/mnt/mount/sdcard/DCIM/100CANON/
+if [ -d /mnt/mount/sdcard0/DCIM/100CANON ] ; then
+    LOCATION=/mnt/mount/sdcard0/DCIM/100CANON/
 else 
     echo "No Photo's detected."
     exit 1

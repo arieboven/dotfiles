@@ -1,10 +1,12 @@
 #!/bin/sh
 
-choises="Mount\nUnmount"
+choises="mount\nunmount"
+location="usb\nsdcard"
+index=0
 
 chose=$(echo -e "$choises" | dmenu -i -b -p "Mount chose: ") || exit 1
 
-if [ "$chose" == "Mount" ]; then
+if [ "$chose" == "mount" ]; then
     # Find removable devices
     usbdrives="$(lsblk -rpo +RM | grep part | awk '$7==1{printf "%s (%s)\n",$1,$4}')"
 
@@ -16,15 +18,24 @@ if [ "$chose" == "Mount" ]; then
 
     # Devices fount
     mountDev="$(echo -e "$usbdrives" | dmenu -i -b -p "Which device do you want to mount:")" || exit 1
-
-    # Find mountable dirs in /mnt/mount
-    dest="$(find /mnt/mount/ -maxdepth 1 -mindepth 1 -type d$(mount | grep /mnt/mount | awk '{printf " -not -path %s",$3}') -printf '/%f\n' | sort| dmenu -i -b -p "In which folder do you want to mount:")" || exit 1
     drive=$(echo $mountDev | awk '{print $1}')
-    destDir="/mnt/mount$dest"
+
+    # Create empty folder to mount in /mnt/mount
+    dest="$(echo -e "$location" | dmenu -i -b -p "In which folder do you want to mount:")" || exit 1
+    dir=/mnt/mount/${dest}*
+    for d in $dir; do
+        [ "$d" == "$dir" ] && continue
+        [ "$d" != "/mnt/mount/${dest}${index}" ] && break
+        number=$(echo "$d" | tr -d -c 0-9)
+        index=$(($number + 1))
+    done
+    destDir="/mnt/mount/${dest}${index}"
+    mkdir -p "$destDir"
 
     # mount
-    sudo mount -o uid=$UID,gid=$(id -g $USER) $drive $destDir && notify-send mount "Device succesfully mounted"
-elif [ "$chose" == "Unmount" ]; then
+    sudo mount -o uid=$UID,gid=$(id -g $USER) $drive $destDir && \
+        notify-send "Device succesfully mounted" "mounted on $destDir"
+elif [ "$chose" == "unmount" ]; then
     # Find removable devices
     usbdrives="$(lsblk -rp | grep part | awk '$3==1 && $7!=""{printf "%s (%s) [%s]\n",$7,$4,$1}')"
 
@@ -40,5 +51,6 @@ elif [ "$chose" == "Unmount" ]; then
     device="$(echo "$unMountDev" | awk '{print $1}')"
     mount | grep "$device" &>/dev/null || exit 1
     # unmount
-    sudo umount "$device" && notify-send mount "Device succesfully unmounted"
+    sudo umount "$device" && rmdir "$device" && \
+        notify-send "Device succesfully unmounted" "unmounted from $device"
 fi

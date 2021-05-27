@@ -48,7 +48,7 @@ alias fd='find . -type d -iname'
 alias cp='cp -i'
 alias mv='mv -i'
 # If ranger close set window title back to St
-alias ranger='ranger; echo -ne "\033]0;St\007"'
+alias ranger='ranger; echo -ne "\033]0;st\007"'
 alias dutch='trans en:nl'
 alias english='trans nl:en'
 

@@ -1,7 +1,7 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 get_status_icon() {
-    if pactl list | sed -n '/^Source/,/^$/p' | grep Mute | grep yes >/dev/null; then
+    if pactl list sources | grep 'Mute: yes' >/dev/null; then
         echo -n ""
     else
         echo -n "🎙️"

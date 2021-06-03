@@ -48,7 +48,7 @@ set wildmode=longest,list,full
 set tabstop=4               " Number of visual spaces per TAB
 set softtabstop=4           " Number of speces in tab when editing
 set shiftwidth=4            " Indents will have a witdth of 4
-set expandtab               " Tabs are spaces
+" set expandtab               " Tabs are spaces
 set smartindent
 
 set splitbelow splitright   " When use split new window below, or right

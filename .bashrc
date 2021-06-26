@@ -51,6 +51,7 @@ alias mv='mv -i'
 alias ranger='ranger; echo -ne "\033]0;st\007"'
 alias dutch='trans en:nl'
 alias english='trans nl:en'
+alias tmp='vim /tmp/tmpfile.txt'
 
 alias la='ls -A'
 alias ll='ls -alF'
